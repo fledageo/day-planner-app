@@ -1,17 +1,20 @@
-.container{
+.container {
     height: 100vh;
     background-image: url("../../../../public/images/Welcome-section-bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+
 }
-.mainWrapper{
+
+.mainWrapper {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     display: flex;
 }
-.rightColumn{
+
+.rightColumn {
     width: 50%;
     height: 100%;
     display: flex;
@@ -20,11 +23,8 @@
     background-color: rgba(35, 73, 66, 0.3);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 41% 100%);
 }
-.leftColumn{
-    width: 50%;
-    height: 100%;
-}
-.welcomeTitleBlock{
+
+.welcomeTitleBlock {
     display: flex;
     flex-direction: column;
 }
@@ -40,12 +40,12 @@
 
 .title:nth-child(2) {
     animation-delay: 0.5s;
-    margin-left:40px;
+    margin-left: 40px;
 }
 
 .title:nth-child(3) {
     animation-delay: 1s;
-    margin-left:100px;
+    margin-left: 100px;
 }
 
 @keyframes slideIn {
@@ -55,3 +55,43 @@
     }
 }
 
+
+
+.leftColumn {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.welcomeMessageBlock {
+    width: 70%;
+    margin-left: 30px;
+    animation: smoothComeIn 1s ease-out forwards;
+}
+
+.welcomeText {
+    color: rgb(241, 248, 232);
+}
+
+@keyframes smoothComeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.welcomeText,
+.welcomActionBlock {
+    opacity: 0;
+    animation: smoothComeIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+    /* Adjust the delay as needed */
+}

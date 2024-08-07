@@ -42,3 +42,47 @@
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
     transform: scale(1.05);
 }
+.logoBlock{
+    width: 5%;
+}
+.othersBlock{
+    width: 5%;
+    display: flex;
+    justify-content: end;
+}
+
+/* Large desktops and laptops */
+@media (max-width: 1200px) {
+    
+}
+
+/* Tablets and smaller devices */
+@media (max-width: 992px) {
+    .menuLink{
+        font-size: 14px;
+    }
+    .personIcon{
+        width: 25px;
+    }
+    .logoIcon{
+        width: 35px;
+    }
+}
+
+/* Small tablets and large mobile devices */
+@media (max-width: 768px) {
+    .menuLink{
+        font-size: 12px;
+    }
+    .personIcon{
+        width: 20px;
+    }
+    .logoIcon{
+        width: 30px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 576px) {
+    
+}
