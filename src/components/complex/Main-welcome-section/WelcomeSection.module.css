@@ -31,7 +31,7 @@
 
 .title {
     font-size: 50px;
-    color: rgb(241, 248, 232);
+    color: rgba(241, 248, 232,0.6);
     display: inline-block;
     opacity: 0;
     transform: translateX(100%);

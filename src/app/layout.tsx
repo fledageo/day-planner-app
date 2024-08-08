@@ -3,6 +3,7 @@ import  "bootstrap/dist/css/bootstrap.min.css"
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/complex/Main-header/Header";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -21,7 +22,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <Header/>
+        {children}
+      </body>
     </html>
   );
 }

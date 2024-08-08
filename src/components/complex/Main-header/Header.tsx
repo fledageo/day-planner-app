@@ -1,11 +1,10 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from "./Header.module.css"
 import Link from 'next/link';
 import { LuBookOpenCheck } from "react-icons/lu";
 import { IoPerson } from "react-icons/io5";
 import { useState, useRef } from 'react';
-import { FiAlignJustify } from "react-icons/fi";
 
 
 const Header = () => {
@@ -13,21 +12,27 @@ const Header = () => {
   const dropBtnRef = useRef<HTMLButtonElement | null>(null)
 
 
-  window.onclick = (e: MouseEvent) => {
-    const target = e.target as HTMLElement
-    if (dropBtnRef.current) {
-      if (!dropBtnRef.current.contains(target) && target.id !== "sideBar") {
-        setIsOpen(false)
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      console.log("Yess")
+      if (dropBtnRef.current) {
+        if (!dropBtnRef.current.contains(target) && target.id !== "sideBar") {
+          setIsOpen(false)
+        }
       }
-    }
-  }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+  }, []);
+
   return (
     <>
       <div className={style.container}>
         <div className={style.mainWrapper}>
           <nav className={`navbar ${style.navWrapper}`}>
             <div className={style.logoBlock}>
-              <Link href={"/"} className={`navbar-brand m-0 ${style.menuLink}`}><LuBookOpenCheck size={40} className={style.logoIcon} /></Link>
+              <Link href={"/"} className={`m-0 ${style.menuLink}`}><LuBookOpenCheck size={40} className={style.logoIcon} /></Link>
             </div>
             <div className={style.menuBlock}>
               <ul className={`navbar-nav ${style.navMenu}`}>
@@ -47,25 +52,23 @@ const Header = () => {
             </div>
 
             <div className={style.personIconBlock}>
-              {/* need to change */}
-              <Link href={"/"} className={`navbar-brand m-0 ${style.menuLink}`}><IoPerson size={30} className={style.personIcon} /></Link>
-            </div>
+              <button
+                className={`m-0 ${style.dropMenuBtn} ${isOpen ? style.open : ""}`}
+                ref={dropBtnRef}
+                onClick={() => setIsOpen(!isOpen)}
+              >
 
-            <div className={style.dropdownMenuBlock}>
-              <button id="dropdown-btn" className={style.dropBtn} ref={dropBtnRef} onClick={() => setIsOpen(!isOpen)}>
-                <FiAlignJustify size={30}/>
+                <IoPerson size={30} className={style.personIcon} />
               </button>
             </div>
           </nav>
         </div>
-        {isOpen && (
-          <div className={style.dropdownSideBar} id='sideBar'>
-            <Link href="/">Home</Link>
-            <Link href="/">Home</Link>
-            <Link href="/">Home</Link>
-            <Link href="/">Home</Link>
-          </div>
-        )}
+        <div className={`${style.dropdownSideBar} ${isOpen ? style.show : ''}`} id='sideBar'>
+          <Link href="/user/signUp" className={style.dropItem}>Sign up</Link>
+          <Link href="/" className={style.dropItem}>Sign in</Link>
+          <Link href="/" className={style.dropItem}>...</Link>
+          <Link href="/" className={style.dropItem}>...</Link>
+        </div>
       </div>
     </>
   )
