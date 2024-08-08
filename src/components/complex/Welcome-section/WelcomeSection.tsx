@@ -7,7 +7,6 @@ const WelcomeSection = () => {
   const [isVisible, setIsVisible] = useState<Boolean>(false)
   const componentRef = useRef(null)
 
-  console.log("rerender")
   const onIntersection = ([entries]: IntersectionObserverEntry[]) => {
     setIsVisible(entries.isIntersecting)
   }
